@@ -1,0 +1,36 @@
+﻿@model Studenti.Models.LabVezba
+
+@{
+    ViewData["Title"] = "Students in Lab Exercise";
+}
+
+<h1>@Model.Naslov</h1>
+<h2>@Model.Opis</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Index</th>
+            <th>Completed</th>
+            <th>Points</th>
+            <th>Completion Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var studentLab in Model.Students)
+        {
+            <tr>
+                <td>@studentLab.Student.ImePrezime</td>
+                <td>@studentLab.Student.Indeks</td>
+                <td>@studentLab.Zavrsena</td>
+                <td>@studentLab.Poeni</td>
+                <td>@studentLab.DataZavrsuvanje?.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="EditStudentLab" asp-controller="StudentLabs" asp-route-id="@studentLab.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

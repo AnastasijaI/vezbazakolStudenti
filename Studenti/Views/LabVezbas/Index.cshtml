@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Studenti.Models.LabVezba>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Lab Exercises</h1>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div style="display: flex;">
+    <form class="form-inline my-lg-0" asp-controller="LabVezbas" asp-action="Index" style="padding: 10px;">
+        <div style="display: flex;">
+            <input name="searchString1" type="text" class="form-control" placeholder="Pretrazhi spored naslov.." style="font-size: 13px; padding-top: 0px; padding-bottom: 0px; background-color: ivory" />
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search" style="font-size: 13px; padding-top: 0px; margin-top: 3%; padding-bottom: 0px;"></i></button>
+        </div>
+    </form>
+    <form class="form-inline my-lg-0" asp-controller="LabVezbas" asp-action="Index" style="padding: 10px;">
+        <div style="display: flex;">
+            <input name="searchString2" type="text" class="form-control" placeholder="Pretrazhi spored opis.." style="font-size: 13px; padding-top: 0px; padding-bottom: 0px; background-color: ivory" />
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search" style="font-size: 13px; padding-top: 0px; margin-top: 3%; padding-bottom: 0px;"></i></button>
+        </div>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naslov)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naslov)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

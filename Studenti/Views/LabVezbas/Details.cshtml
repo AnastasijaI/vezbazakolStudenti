@@ -1,0 +1,35 @@
+﻿@model Studenti.Models.LabVezba
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>LabVezba</h4>
+    <hr />
+    <dl class="row">
+        
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Naslov)
+        </dt> 
+        @* <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Naslov)
+        </dd> *@
+        <td>
+            <a asp-action="Index" asp-controller="StudentLabs" asp-route-id="@Model.Id">@Html.DisplayFor(modelItem => modelItem.Naslov)</a>
+        </td>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+    </dl>
+   
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
